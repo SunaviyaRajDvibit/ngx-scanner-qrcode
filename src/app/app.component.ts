@@ -15,24 +15,14 @@ export class AppComponent implements AfterViewInit {
         width: window.innerWidth
       },
     },
-    // canvasStyles: [
-    //   {
-    //     lineWidth: 1,
-    //     fillStyle: '#00950685',
-    //     strokeStyle: '#00950685',
-    //   },
-    //   {
-    //     font: '17px serif',
-    //     fillStyle: '#ff0000',
-    //     strokeStyle: '#ff0000',
-    //   }
-    // ],
+
   };
 
   public qrCodeResult: ScannerQRCodeSelectedFiles[] = [];
   public qrCodeResult2: ScannerQRCodeSelectedFiles[] = [];
 
   @ViewChild('action') action!: NgxScannerQrcodeComponent;
+  // @ViewChild('action', { static: true }) action!: NgxScannerQrcodeComponent;
 
   constructor(private qrcode: NgxScannerQrcodeService) { }
 
@@ -83,13 +73,17 @@ export class AppComponent implements AfterViewInit {
     const constrains = this.action.getConstraints();
     console.log(constrains);
   }
-  
+
   public applyConstraints() {
     const constrains = this.action.applyConstraints({
       ...this.action.getConstraints(),
       width: 510
     });
     console.log(constrains);
+  }
+
+  dataHandler(event: any) {
+    event;
   }
 
 }
